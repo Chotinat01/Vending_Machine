@@ -1,6 +1,3 @@
-// pay.js (โค้ดใหม่ทั้งหมด)
-
-// --- โค้ดส่วนบนสุด (เหมือนเดิม) ---
 const params = new URLSearchParams(window.location.search);
 const productName = params.get("name");
 const productPrice = params.get("price");
@@ -29,13 +26,12 @@ options.forEach(option => {
   });
 });
 
-// ---------- ฟังก์ชันนับถอยหลัง (เพิ่มใหม่) ----------
 function startCountdown() {
   const countdownPopup = document.getElementById("countdown-popup");
   const countdownTimer = document.getElementById("countdown-timer");
   const countdownBox = countdownPopup.querySelector('.countdown-box p');
   
-  countdownPopup.style.display = "flex"; // แสดง Pop-up
+  countdownPopup.style.display = "flex"; 
 
   let seconds = 5;
   countdownTimer.textContent = seconds;
@@ -47,7 +43,7 @@ function startCountdown() {
     if (seconds <= 0) {
       clearInterval(interval);
       countdownBox.textContent = "ได้รับสินค้าแล้ว!";
-      countdownTimer.style.display = "none"; // ซ่อนตัวเลข
+      countdownTimer.style.display = "none";
       
       // หน่วงเวลา 1.5 วินาที แล้วกลับไปหน้าแรก
       setTimeout(() => {
@@ -58,7 +54,6 @@ function startCountdown() {
 }
 
 
-// ---------- แก้ไขปุ่มยืนยันการชำระเงิน ----------
 document.getElementById("confirm-btn").addEventListener("click", () => {
   if (!selectedMethod) {
     alert("กรุณาเลือกวิธีการชำระเงิน");
@@ -82,7 +77,7 @@ document.getElementById("confirm-btn").addEventListener("click", () => {
     }
 
     if (paidAmount < itemPrice) {
-      alert(`จำนวนเงินไม่เพียงพอ!\nราคาสินค้าคือ ${itemPrice} บาท แต่ชำระมาเพียง ${paidAmount} บาท`);
+      alert(`จำนวนเงินไม่เพียงพอ!\nราคาสินค้าคือ ${itemPrice} บาท`);
     } else {
       const change = paidAmount - itemPrice;
       alert(`ชำระเงินสำเร็จ!\nได้รับเงินทอน ${change.toFixed(2)} บาท`);

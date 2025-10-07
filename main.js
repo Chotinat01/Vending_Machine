@@ -1,5 +1,5 @@
 
-console.log("JS Loaded"); // เช็คว่าไฟล์ JS ถูกโหลดหรือไม่
+
 
 const products = [
   { id: "A1", name: "ลูฟี่", price: 1200, img: "images/onepice_luffy.jpg" },

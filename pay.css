@@ -1,12 +1,11 @@
 body {
   font-family: Arial, sans-serif;
   padding: 20px;
-  background: #f8f8f8;
+  background: #b1e1e4ff;
 }
 
-
 .cancel-btn {
-  display: inline-block; /* เปลี่ยนเป็น inline-block */
+  display: inline-block; 
   text-decoration: none;
   color: #6b7280;
   font-size: 16px;
@@ -89,11 +88,9 @@ body {
   background: #218838;
 }
 
-/* --- โค้ดสำหรับจัดกลาง --- */
 
-/* 1. จัดเนื้อหาในกล่องรายละเอียดให้อยู่ตรงกลางทั้งหมด */
 .payment-info {
-  text-align: center; /* <-- เพิ่มบรรทัดนี้ */
+  text-align: center; 
   display: none;
   margin-top: 20px;
   padding: 20px;
@@ -103,15 +100,13 @@ body {
   animation: fadeIn 0.4s;
 }
 
-/* 2. จัดฟอร์มบัตรเครดิตให้อ่านง่าย (ข้อความชิดซ้าย) */
+
 .payment-info form {
-  display: inline-flex; /* ปรับ display ให้ฟอร์มไม่ยืดเต็มความกว้าง */
+  display: inline-flex; 
   flex-direction: column;
-  text-align: left; /* ทำให้ label และ input ชิดซ้าย */
-  gap: 5px; /* เพิ่มระยะห่างระหว่างบรรทัด */
+  gap: 5px;
 }
 
-/* --- โค้ดเดิม (ไม่ต้องแก้) --- */
 
 .payment-info label {
   margin-top: 10px;
@@ -127,7 +122,7 @@ body {
 
 
 .countdown-overlay {
-  display: none; /* ซ่อนไว้ก่อน */
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
