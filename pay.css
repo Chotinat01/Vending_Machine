@@ -1,0 +1,173 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background: #f8f8f8;
+}
+
+
+.cancel-btn {
+  display: inline-block; /* เปลี่ยนเป็น inline-block */
+  text-decoration: none;
+  color: #6b7280;
+  font-size: 16px;
+  padding: 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background-color: #ffffff;
+  transition: all 0.2s ease;  
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.cancel-btn:hover {
+  background-color: #f9fafb;
+  color: #1f2937;
+  border-color: #9ca3af;
+}
+
+.head {
+  text-align: center;
+  color: #333;
+}
+
+.product-summary {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.product-summary img {
+  width: 200px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+
+.payment-methods {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.payment-option {
+  flex: 1;
+  text-align: center;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  background: white;
+  transition: 0.3s;
+}
+
+.payment-option:hover {
+  border-color: #007bff;
+}
+
+.payment-option.selected {
+  border-color: #28a745;
+  background: #d4edda;
+  font-weight: bold;
+}
+
+#confirm-btn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: none;
+  background: #28a745;
+  color: white;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#confirm-btn:hover {
+  background: #218838;
+}
+
+/* --- โค้ดสำหรับจัดกลาง --- */
+
+/* 1. จัดเนื้อหาในกล่องรายละเอียดให้อยู่ตรงกลางทั้งหมด */
+.payment-info {
+  text-align: center; /* <-- เพิ่มบรรทัดนี้ */
+  display: none;
+  margin-top: 20px;
+  padding: 20px;
+  background: #f4f4f4;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  animation: fadeIn 0.4s;
+}
+
+/* 2. จัดฟอร์มบัตรเครดิตให้อ่านง่าย (ข้อความชิดซ้าย) */
+.payment-info form {
+  display: inline-flex; /* ปรับ display ให้ฟอร์มไม่ยืดเต็มความกว้าง */
+  flex-direction: column;
+  text-align: left; /* ทำให้ label และ input ชิดซ้าย */
+  gap: 5px; /* เพิ่มระยะห่างระหว่างบรรทัด */
+}
+
+/* --- โค้ดเดิม (ไม่ต้องแก้) --- */
+
+.payment-info label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.payment-info input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+
+.countdown-overlay {
+  display: none; /* ซ่อนไว้ก่อน */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+}
+
+.countdown-box {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+}
+
+.countdown-box p {
+  font-size: 20px;
+  color: #555;
+  margin: 0;
+}
+
+.countdown-box h1 {
+  font-size: 80px;
+  color: #28a745;
+  margin: 10px 0 0 0;
+}
+
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

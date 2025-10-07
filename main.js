@@ -1,4 +1,6 @@
-// เก็บข้อมูลสินค้าเป็น Array of Objects
+
+console.log("JS Loaded"); // เช็คว่าไฟล์ JS ถูกโหลดหรือไม่
+
 const products = [
   { id: "A1", name: "ลูฟี่", price: 1200, img: "images/onepice_luffy.jpg" },
   { id: "A2", name: "ฟรีเรน", price: 900, img: "images/frieren.jpg" },
@@ -17,57 +19,55 @@ const products = [
 const container_product = document.getElementById("product-container");
 
 // สร้างสินค้าอัตโนมัติ
-products.forEach(product => { //.forEach วนลูปทุกตัวใน Array
+products.forEach(product => {
   const item = document.createElement("div");
-  item.classList.add("item"); // เพิ่ม class item ให้ div เพื่อให้ CSS สามารถแต่งสวยได้
+  item.classList.add("item");
 
   item.innerHTML = `
-    <img src="${product.img}" alt="${product.name}">
     <p class="id">${product.id}</p>
+    <img src="${product.img}" alt="${product.name}">
     <p class="name">${product.name}</p>
     <p class="price">ราคา: ${product.price} บาท</p>
   `;
 
+  item.addEventListener("click", () => {
+    document.getElementById("popup-img").src = product.img;
+    document.getElementById("popup-name").textContent = product.name;
+    document.getElementById("popup-price").textContent = "ราคา: " + product.price + " บาท";
+    document.getElementById("popup-id").textContent = "รหัสสินค้า: " + product.id;
+    document.getElementById("popup").style.display = "flex";
+  });
+
+
   container_product.appendChild(item);
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  // ปุ่มซื้อสินค้าใน popup
+  document.getElementById("buy-btn").addEventListener("click", () => {
+    const name = document.getElementById("popup-name").textContent;
+    const price = document.getElementById("popup-price").textContent.replace("ราคา: ", "").replace(" บาท", "");
+    const id = document.getElementById("popup-id").textContent.replace("รหัสสินค้า: ", "");
+    const imgPath = document.getElementById("popup-img").src; 
 
-
-// กดปุ่มซื้อใหญ่
-document.getElementById("buy-btn").addEventListener("click", () => {
-  // ทำ popup list ให้เลือกสินค้า
-  let message = "เลือกสินค้าที่ต้องการซื้อ:\n\n";
-  products.forEach(p => {
-    message += `${p.id} - ${p.name} (${p.price} บาท)\n`;
+    // ส่งค่าไป pay.html
+    window.location.href =
+  `pay.html?name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&id=${encodeURIComponent(id)}&img=${encodeURIComponent(imgPath)}`;
   });
 
-  const choice = prompt(message + "\n👉 พิมพ์รหัสสินค้า (เช่น A1, A2):");
-
-  const selected = products.find(p => p.id.toUpperCase() === choice?.toUpperCase());
-
-  if (selected) {
-    // เลือกช่องทางชำระเงิน
-    const payment = prompt(
-      `คุณเลือกซื้อ: ${selected.name} ราคา ${selected.price} บาท\n\n` +
-      "กรุณาเลือกช่องทางชำระเงิน:\n" +
-      "1. เงินสด\n" +
-      "2. พร้อมเพย์\n" +
-      "3. แลกโค้ด\n\n👉 พิมพ์เลข 1, 2 หรือ 3"
-    );
-
-    if (payment === "1") {
-      alert(`💵 ชำระด้วยเงินสด\nซื้อ ${selected.name} เรียบร้อย!`);
-    } else if (payment === "2") {
-      alert(`📱 ชำระด้วยพร้อมเพย์\nซื้อ ${selected.name} เรียบร้อย!`);
-    } else if (payment === "3") {
-      alert(`🎟️ ใช้โค้ดแลกสินค้า\nซื้อ ${selected.name} เรียบร้อย!`);
-    } else if (payment !== null) {
-      alert("❌ ช่องทางชำระเงินไม่ถูกต้อง");
-    }
-
-  } else if (choice !== null) {
-    alert("❌ ไม่พบสินค้านี้ ลองใหม่อีกครั้ง");
-  }
 });
 
 
+
+
+// ปิด popup
+document.getElementById("close-popup").addEventListener("click", () => {
+  document.getElementById("popup").style.display = "none";
+});
+
+// ปิด popup เมื่อคลิกนอกกล่อง
+window.addEventListener("click", (e) => {
+  if (e.target.id === "popup") {
+    document.getElementById("popup").style.display = "none";
+  }
+});

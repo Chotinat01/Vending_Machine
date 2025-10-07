@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>หน้าชำระเงิน</title>
+  <link rel="stylesheet" href="pay.css">
+</head>
+<body>
+
+  <a href="main.html" class="cancel-btn">&larr; กลับหน้าแรก</a>
+  <h1 class="head">หน้าชำระเงิน</h1>
+
+  <div class="product-summary">
+    <h1>สินค้าที่คุณเลือก</h1>
+    <img id="product-img" alt="รูปสินค้า"> 
+    <h2 id="product-name"></h2>
+    <p id="product-price"></p>
+  </div>
+
+  <h3>เลือกวิธีการชำระเงิน</h3>
+  <div class="payment-methods">
+    <div class="payment-option" data-method="transfer">พร้อมเพย์</div>
+    <div class="payment-option" data-method="cash">เงินสด</div>
+  </div>
+
+  <div id="payment-details">
+    <div id="transfer-details" class="payment-info">
+      <h4>สแกน QR Code เพื่อชำระเงิน</h4>
+      <img src="images/qr_promtpay.jpg" alt="QR Code" style="width: 200px;">
+      <p style="font-weight: bold;">ยอดชำระ: <span id="amount-qr"></span> บาท</p>
+    </div>
+
+    <div id="cash-details" class="payment-info">
+      <h4>กรุณาใส่เงินสด</h4>
+      <form>
+        <input type="text" id="chash-input" placeholder="กรอกจำนวนเงินที่ใส่ (บาท)">
+      </form>
+      <p style="font-weight: bold;">ยอดชำระ: <span id="amount-cash"></span> บาท</p>
+    </div>
+
+  </div>
+  <button id="confirm-btn">ยืนยันการชำระเงิน</button>
+
+  <div id="countdown-popup" class="countdown-overlay">
+    <div class="countdown-box">
+      <p>กำลังเตรียมสินค้า...</p>
+      <h1 id="countdown-timer">5</h1>
+    </div>
+  </div>
+
+  <script src="pay.js"></script>
+</body>
+</html>
